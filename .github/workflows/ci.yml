@@ -1,0 +1,34 @@
+name: Continous Integration
+
+on:
+  push:
+    branches:
+      - "main"
+    
+jobs:
+  coontinous-integration:
+    defaults:
+      run:
+        working-directory: ./codebase/rdicidr-0.1.0
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up actions
+        uses: actions/setup-node@v4
+        with:
+          node-version: 15
+      - name: Install dependencies
+        run: npm install
+      - name: Lint
+        run: npm run lint
+      - name: Formatter
+        run: npm run prettier
+      - name: testing
+        run: CI=true npm run test
+      - name: Build
+        run: npm run build
+
+
+
+
