@@ -23,7 +23,7 @@ jobs:
       - name: Lint
         run: npm run lint
       - name: Formatter
-        run: npm run prettier
+        run: npm install --save-dev --save-exact prettier && npm run prettier
       - name: testing
         run: CI=true npm run test
       - name: Build
